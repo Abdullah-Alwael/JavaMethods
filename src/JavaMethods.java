@@ -97,13 +97,48 @@ public class JavaMethods {
 
     public static boolean passwordCheck(String pass){
         boolean isValid = false;
+        boolean isLength8 = false;
+        boolean consistsLettersDigits = false;
+        boolean contains2OrMoreDigits = false;
 
-        //  !pass.contains("!@#$%^&*()_+-={}[]|:;\"'<>,.?/\\.~`€£¥¢±÷×°√∞µ©®™§áéñü¼½¾")
-        if (pass.length() >= 8
-                && pass.matches("([A-z]|(\\d){2,}){8,}")){
-            isValid = true;
+//        pass.matches("([A-z]|(\\d){2,}){8,}")      removed due to complexity
+        // check has 8 =
+        if (pass.length() >= 8){
+            isLength8 = true;
+        }
+        // check does not contain special characters =
+        if(!pass.contains("!@#$%^&*()_+-={}[]|:;\"'<>,.?/\\.~`€£¥¢±÷×°√∞µ©®™§áéñü¼½¾")){
+            consistsLettersDigits = true;
         }
 
+        // contains at least 2 digits check:
+        char[] passwordSplit = pass.toCharArray();
+        int numberOfDigits = 0;
+
+        for (char c : passwordSplit){
+            switch (c){
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    numberOfDigits++;
+                    break;
+            }
+        }
+
+        if(numberOfDigits >=2){
+            contains2OrMoreDigits =true;
+        }
+
+        if (isLength8 && consistsLettersDigits && contains2OrMoreDigits){
+            isValid = true;
+        }
         return isValid;
     }
 }
