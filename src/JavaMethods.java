@@ -100,7 +100,7 @@ public class JavaMethods {
 
         //  !pass.contains("!@#$%^&*()_+-={}[]|:;\"'<>,.?/\\.~`€£¥¢±÷×°√∞µ©®™§áéñü¼½¾")
         if (pass.length() >= 8
-                && pass.matches("[A-z]")){
+                && pass.matches("([A-z]|(\\d){2,}){8,}")){
             isValid = true;
         }
 
