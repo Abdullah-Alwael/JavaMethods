@@ -25,8 +25,23 @@ public class JavaMethods {
                 System.out.println("There was an error");
         }
 
+        // Q3
+        System.out.println("Password check:");
+        System.out.println("1. A password must have at least eight characters.");
+        System.out.println("2. A password consists of only letters and digits.");
+        System.out.println("3. A password must contain at least two digits.");
 
+        System.out.println("Enter your password (You are agreeing to the above Terms and Conditions): ");
 
+        input.nextLine();
+        String password = input.nextLine();
+        boolean isValid = passwordCheck(password);
+
+        if (isValid){
+            System.out.println("Password is valid: "+password);
+        } else {
+            System.out.println("Password is not valid: "+password);
+        }
     }
 //    1 - Write a Java method to find the smallest number among three
 //    numbers.
@@ -72,5 +87,23 @@ public class JavaMethods {
         } else {
             return 'n'; // negative
         }
+    }
+
+//    3 - Write a Java method to check whether a string is a valid password.
+//    Password rules:
+//    A password must have at least eight characters.
+//    A password consists of only letters and digits.
+//    A password must contain at least two digits.
+
+    public static boolean passwordCheck(String pass){
+        boolean isValid = false;
+
+        //  !pass.contains("!@#$%^&*()_+-={}[]|:;\"'<>,.?/\\.~`€£¥¢±÷×°√∞µ©®™§áéñü¼½¾")
+        if (pass.length() >= 8
+                && pass.matches("[A-z]")){
+            isValid = true;
+        }
+
+        return isValid;
     }
 }
