@@ -5,6 +5,27 @@ public class JavaMethods {
         //Q1
         smallestAmongThree();
 
+        //Q2
+        Scanner input = new Scanner(System.in);
+        System.out.println("Checking the sign of a number");
+        System.out.println("enter a number: ");
+        char sign = checkNumberSign(input.nextInt());
+
+        switch (sign){
+            case 'z':
+                System.out.println("The number is zero");
+                break;
+            case 'p':
+                System.out.println("The number is positive");
+                break;
+            case 'n':
+                System.out.println("The number is negative");
+                break;
+            default:
+                System.out.println("There was an error");
+        }
+
+
 
     }
 //    1 - Write a Java method to find the smallest number among three
@@ -37,5 +58,19 @@ public class JavaMethods {
         }
 
         System.out.println("The smallest number is: "+smallest);
+    }
+
+//    2 - Write a Java method that check if the entered number is negative or
+//    positive or zero.
+
+    public static char checkNumberSign(int num){
+
+        if (num == 0 ){
+            return 'z'; // zero
+        } else if (num > 0){
+            return 'p'; // positive
+        } else {
+            return 'n'; // negative
+        }
     }
 }
